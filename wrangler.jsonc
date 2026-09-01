@@ -3,5 +3,15 @@
   "compatibility_date": "2026-08-31",
   "assets": {
     "directory": "./public"
-  }
+  },
+  "routes": [
+    {
+      "pattern": "rubellitewealth.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.rubellitewealth.com",
+      "custom_domain": true
+    }
+  ]
 }
