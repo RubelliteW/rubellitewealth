@@ -2,6 +2,6 @@
   "name": "rubellitewealth",
   "compatibility_date": "2026-08-31",
   "assets": {
-    "directory": "."
+    "directory": "./public"
   }
 }
