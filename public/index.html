@@ -68,6 +68,48 @@
     *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
   }
 
+  /* ---------- reveal-on-scroll ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity .8s ease, transform .8s ease;
+  }
+  .reveal.is-visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .reveal-1.is-visible{transition-delay:.08s;}
+  .reveal-2.is-visible{transition-delay:.16s;}
+  .reveal-3.is-visible{transition-delay:.24s;}
+
+  /* ---------- hero entrance ---------- */
+  @keyframes riseIn{
+    from{opacity:0; transform:translateY(16px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  .hero .eyebrow-line{animation:riseIn .7s ease both;}
+  .hero-head{animation:riseIn .7s ease .1s both;}
+  .hero-sub{animation:riseIn .7s ease .2s both;}
+  .cta-row{animation:riseIn .7s ease .3s both;}
+  .hero-figure{animation:riseIn 1s ease .25s both;}
+
+  /* ---------- gem shimmer ---------- */
+  @keyframes gemFloat{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-8px) rotate(0.6deg);}
+  }
+  /* ---------- gem glow on hover ---------- */
+  .hero-figure svg{
+    animation:gemFloat 7s ease-in-out infinite;
+    transition:filter .5s ease;
+    filter:drop-shadow(0 0 0 rgba(199,165,101,0));
+  }
+  .hero-figure:hover svg, .hero-figure:focus-within svg{
+    filter:
+      drop-shadow(0 0 14px rgba(199,165,101,0.55))
+      drop-shadow(0 0 34px rgba(124,38,53,0.28));
+  }
+
   /* ---------- nav ---------- */
   .nav{
     position:sticky; top:0; z-index:50;
@@ -352,21 +394,106 @@
   /* ---------- contact ---------- */
   .contact{
     padding:130px 0 120px;
+  }
+  .contact-top{
     text-align:center;
+    max-width:640px;
+    margin:0 auto 72px;
   }
   .contact h2{
     font-size:clamp(32px,4vw,48px);
-    max-width:20ch;
-    margin:0 auto;
     line-height:1.15;
   }
-  .contact p{
-    max-width:50ch;
-    margin:26px auto 0;
+  .contact-top p{
+    margin:22px auto 0;
     color:var(--ink-soft);
     font-size:19px;
   }
-  .contact .btn-primary{margin-top:40px; display:inline-block;}
+
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1.3fr 0.9fr;
+    gap:0;
+    border:1px solid var(--rule);
+  }
+  .contact-form{
+    padding:52px 56px;
+    border-right:1px solid var(--rule);
+  }
+  .field-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:26px;
+  }
+  .field{margin-bottom:26px;}
+  .field label{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:15px;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+  }
+  .field input, .field textarea{
+    width:100%;
+    font-family:'EB Garamond', serif;
+    font-size:17px;
+    color:var(--charcoal);
+    background:var(--paper);
+    border:none;
+    border-bottom:1px solid var(--rule);
+    padding:10px 2px;
+    transition:border-color .25s ease, background .25s ease;
+  }
+  .field input:focus, .field textarea:focus{
+    outline:none;
+    border-bottom-color:var(--rubellite);
+    background:var(--cream-dim);
+  }
+  .field textarea{resize:vertical; min-height:96px;}
+  .contact-form button{
+    cursor:pointer;
+    font-family:'EB Garamond', serif;
+  }
+  .form-note{
+    margin-top:18px;
+    font-size:14.5px;
+    color:var(--sage);
+    font-style:italic;
+  }
+  .form-note.is-success{color:var(--rubellite); font-style:normal;}
+
+  .contact-direct{
+    padding:52px 48px;
+    background:var(--cream-dim);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:34px;
+  }
+  .direct-item .direct-label{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--rubellite);
+    font-size:15px;
+    margin-bottom:8px;
+  }
+  .direct-item a{
+    font-size:21px;
+    text-decoration:none;
+    color:var(--ink);
+    border-bottom:1px solid transparent;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .direct-item a:hover{border-bottom-color:var(--brass); color:var(--rubellite);}
+  .direct-item p{margin:0; color:var(--ink-soft);}
+
+  @media (max-width:860px){
+    .contact-grid{grid-template-columns:1fr;}
+    .contact-form{border-right:none; border-bottom:1px solid var(--rule); padding:40px 28px;}
+    .contact-direct{padding:40px 28px;}
+    .field-row{grid-template-columns:1fr;}
+  }
 
   /* ---------- footer ---------- */
   footer{
@@ -393,13 +520,24 @@
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="gem-mark" viewBox="0 0 300 360">
+    <polygon points="150,10 230,70 260,150 150,350 40,150 70,70" stroke="#7c2635" stroke-width="2.4" vector-effect="non-scaling-stroke" fill="none"/>
+    <polygon points="150,10 230,70 190,150 110,150 70,70" stroke="#a9863e" stroke-width="2" vector-effect="non-scaling-stroke" fill="none"/>
+    <line x1="150" y1="10" x2="150" y2="350" stroke="#a9863e" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
+    <line x1="70" y1="70" x2="150" y2="150" stroke="#a9863e" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
+    <line x1="230" y1="70" x2="150" y2="150" stroke="#a9863e" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
+    <line x1="110" y1="150" x2="40" y2="150" stroke="#7c2635" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
+    <line x1="190" y1="150" x2="260" y2="150" stroke="#7c2635" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
+    <line x1="110" y1="150" x2="150" y2="350" stroke="#7c2635" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
+    <line x1="190" y1="150" x2="150" y2="350" stroke="#7c2635" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
+  </symbol>
+</svg>
+
 <nav class="nav">
   <div class="wrap">
     <div class="brand">
-      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-        <path d="M13 1 L23 8 L19 25 L7 25 L3 8 Z" stroke="#7c2635" stroke-width="1.1"/>
-        <path d="M13 1 L13 25 M3 8 L23 8 M7 25 L13 8 L19 25" stroke="#7c2635" stroke-width="0.7"/>
-      </svg>
+      <svg width="22" height="26" viewBox="0 0 300 360"><use href="#gem-mark"/></svg>
       Rubellite
     </div>
     <div class="navlinks">
@@ -425,23 +563,13 @@
       </div>
     </div>
     <div class="hero-figure">
-      <svg width="300" height="360" viewBox="0 0 300 360" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="150,10 230,70 260,150 150,350 40,150 70,70" stroke="#7c2635" stroke-width="1.2" fill="none"/>
-        <polygon points="150,10 230,70 190,150 110,150 70,70" stroke="#a9863e" stroke-width="1" fill="none"/>
-        <line x1="150" y1="10" x2="150" y2="350" stroke="#a9863e" stroke-width="0.7"/>
-        <line x1="70" y1="70" x2="150" y2="150" stroke="#a9863e" stroke-width="0.7"/>
-        <line x1="230" y1="70" x2="150" y2="150" stroke="#a9863e" stroke-width="0.7"/>
-        <line x1="110" y1="150" x2="40" y2="150" stroke="#7c2635" stroke-width="0.7"/>
-        <line x1="190" y1="150" x2="260" y2="150" stroke="#7c2635" stroke-width="0.7"/>
-        <line x1="110" y1="150" x2="150" y2="350" stroke="#7c2635" stroke-width="0.7"/>
-        <line x1="190" y1="150" x2="150" y2="350" stroke="#7c2635" stroke-width="0.7"/>
-      </svg>
+      <svg width="300" height="360" viewBox="0 0 300 360"><use href="#gem-mark"/></svg>
     </div>
   </div>
 </header>
 
 <section class="philosophy" id="philosophy">
-  <div class="wrap grid">
+  <div class="wrap grid reveal">
     <div>
       <div class="rule-gold"></div>
       <h2>Built by business owners, for business owners.</h2>
@@ -455,11 +583,11 @@
 
 <section class="focus" id="focus">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <h2>Core focus areas</h2>
       <p>Three disciplines, applied together, so that your enterprise, your estate, and your family are planned for as one.</p>
     </div>
-    <div class="focus-list">
+    <div class="focus-list reveal reveal-1">
       <div class="focus-item">
         <div class="fi-label">Corporate</div>
         <div>
@@ -487,11 +615,11 @@
 
 <section class="process" id="process">
   <div class="wrap">
-    <div class="section-head" style="border-bottom:none; padding-bottom:0; margin-bottom:0;">
+    <div class="section-head reveal" style="border-bottom:none; padding-bottom:0; margin-bottom:0;">
       <h2>The Rubellite process</h2>
       <p>A four-stage engagement, repeated as your business, tax law, and family circumstances evolve.</p>
     </div>
-    <div class="steps">
+    <div class="steps reveal reveal-1">
       <div class="step">
         <div class="num">One</div>
         <h3>Clarify</h3>
@@ -517,7 +645,7 @@
 </section>
 
 <section class="about" id="about">
-  <div class="wrap grid">
+  <div class="wrap grid reveal">
     <div>
       <div class="rule-gold"></div>
       <p class="about-quote">Like the rare gemstone that inspires our name, Rubellite represents enduring strength, protection, and rare value.</p>
@@ -545,11 +673,11 @@
 
 <section class="practice" id="practice">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <h2>Practice areas</h2>
       <p>Each engagement is built around your corporate structure and integrated with your existing advisory team.</p>
     </div>
-    <div class="practice-grid">
+    <div class="practice-grid reveal reveal-1">
       <div class="pcard">
         <h3>Corporate Capital Optimization</h3>
         <p>Retained earnings sitting in passive corporate investments face heavy tax drag. We implement tax-sheltered corporate growth strategies that convert corporate surplus into tax-free wealth, expanding your family's future liquidity.</p>
@@ -568,9 +696,50 @@
 
 <section class="contact" id="contact">
   <div class="wrap">
-    <h2>Ready to bring absolute clarity to your wealth?</h2>
-    <p>Whether you are scaling your enterprise, planning a corporate transition, or structuring your family legacy, we are here to guide the conversation.</p>
-    <a class="btn-primary" href="#">Request an Executive Review</a>
+    <div class="contact-top reveal">
+      <h2>Ready to bring absolute clarity to your wealth?</h2>
+      <p>Whether you are scaling your enterprise, planning a corporate transition, or structuring your family legacy, we are here to guide the conversation.</p>
+    </div>
+
+    <div class="contact-grid reveal reveal-1">
+      <form class="contact-form" id="contactForm">
+        <div class="field-row">
+          <div class="field">
+            <label for="cf-name">Full name</label>
+            <input type="text" id="cf-name" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="cf-phone">Phone (optional)</label>
+          <input type="tel" id="cf-phone" name="phone" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="cf-message">How can we help?</label>
+          <textarea id="cf-message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Request an Executive Review</button>
+        <p class="form-note" id="formNote">Submitting opens your email client, addressed to our advisory team.</p>
+      </form>
+
+      <div class="contact-direct">
+        <div class="direct-item">
+          <div class="direct-label">Email</div>
+          <a href="mailto:info@rubellitewealth.com">info@rubellitewealth.com</a>
+        </div>
+        <div class="direct-item">
+          <div class="direct-label">Telephone</div>
+          <a href="tel:+17787141691">778-714-1691</a>
+        </div>
+        <div class="direct-item">
+          <div class="direct-label">Engagements</div>
+          <p>By referral and private introduction.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -581,10 +750,62 @@
       <a href="#philosophy">Philosophy</a>
       <a href="#focus">Focus Areas</a>
       <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="mailto:info@rubellitewealth.com">info@rubellitewealth.com</a>
+      <a href="tel:+17787141691">778-714-1691</a>
     </div>
   </div>
 </footer>
+
+<script>
+  // Reveal-on-scroll
+  (function(){
+    var items = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){
+      items.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -60px 0px' });
+    items.forEach(function(el){ io.observe(el); });
+  })();
+
+  // Contact form -> mailto
+  (function(){
+    var form = document.getElementById('contactForm');
+    var note = document.getElementById('formNote');
+    if(!form) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var name = form.name.value.trim();
+      var email = form.email.value.trim();
+      var phone = form.phone.value.trim();
+      var message = form.message.value.trim();
+
+      var subject = 'Private Consultation Request — ' + name;
+      var bodyLines = [
+        'Name: ' + name,
+        'Email: ' + email,
+        'Phone: ' + (phone || 'Not provided'),
+        '',
+        message
+      ];
+      var mailto = 'mailto:info@rubellitewealth.com'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(bodyLines.join('\n'));
+
+      window.location.href = mailto;
+
+      note.textContent = 'Your email client should now be open with this message addressed to info@rubellitewealth.com.';
+      note.classList.add('is-success');
+    });
+  })();
+</script>
 
 </body>
 </html>
