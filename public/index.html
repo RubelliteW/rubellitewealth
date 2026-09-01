@@ -1,13 +1,590 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rubellite Wealth Management | Corporate Estate &amp; Succession Planning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,440;0,9..144,560;1,9..144,440&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
 
+  :root{
+    --ink:        #14231c;
+    --ink-soft:   #223229;
+    --cream:      #f2eee3;
+    --cream-dim:  #e8e2d2;
+    --paper:      #faf8f2;
+    --rubellite:  #7c2635;
+    --rubellite-deep: #5c1a26;
+    --brass:      #a9863e;
+    --brass-soft: #c7a565;
+    --charcoal:   #262320;
+    --sage:       #7c8b7c;
+    --rule: rgba(38,35,32,0.16);
+    --rule-dark: rgba(242,238,227,0.18);
+    --max: 1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--charcoal);
+    font-family:'EB Garamond', serif;
+    font-size:19px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:440;
+    color:var(--ink);
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  a{color:inherit;}
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 56px;
+  }
+
+  @media (max-width:760px){
+    .wrap{padding:0 26px;}
+    body{font-size:17px;}
+  }
+
+  /* ---------- focus & motion ---------- */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--brass);
+    outline-offset:3px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(242,238,227,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--rule);
+  }
+  .nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:84px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    font-family:'Fraunces', serif;
+    font-size:22px;
+    color:var(--ink);
+    letter-spacing:0.01em;
+  }
+  .brand svg{flex:none;}
+  .navlinks{
+    display:flex; gap:38px;
+    font-size:16px;
+  }
+  .navlinks a{text-decoration:none; color:var(--ink-soft); border-bottom:1px solid transparent; padding-bottom:3px;}
+  .navlinks a:hover{border-bottom-color:var(--brass);}
+  .nav-cta{
+    font-size:15.5px;
+    padding:11px 22px;
+    border:1px solid var(--ink);
+    color:var(--ink);
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--ink); color:var(--cream);}
+  @media (max-width:900px){ .navlinks{display:none;} }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:108px 0 96px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:70px;
+    align-items:center;
+  }
+  .eyebrow-line{
+    display:flex; align-items:center; gap:14px;
+    margin-bottom:26px;
+    color:var(--rubellite);
+    font-size:15px;
+    letter-spacing:0.04em;
+  }
+  .eyebrow-line .stem{width:38px; height:1px; background:var(--rubellite);}
+  h1.hero-head{
+    font-size:clamp(38px, 5vw, 60px);
+    line-height:1.08;
+  }
+  .hero-sub{
+    margin-top:26px;
+    max-width:46ch;
+    font-size:20px;
+    color:var(--ink-soft);
+    line-height:1.65;
+  }
+  .cta-row{
+    margin-top:40px;
+    display:flex; align-items:center; gap:24px; flex-wrap:wrap;
+  }
+  .btn-primary{
+    background:var(--rubellite);
+    color:var(--paper);
+    text-decoration:none;
+    padding:16px 30px;
+    font-size:16px;
+    letter-spacing:0.02em;
+    border:1px solid var(--rubellite);
+    transition:background .25s ease, color .25s ease;
+  }
+  .btn-primary:hover{background:var(--rubellite-deep); border-color:var(--rubellite-deep);}
+  .cta-note{font-size:15.5px; color:var(--sage); font-style:italic;}
+
+  .hero-figure{
+    display:flex; justify-content:center; align-items:center;
+  }
+
+  /* ---------- gem motif svg gets its own styling via currentColor ---------- */
+
+  /* ---------- philosophy ---------- */
+  .philosophy{
+    background:var(--ink);
+    color:var(--cream);
+    padding:100px 0;
+  }
+  .philosophy .grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:80px;
+  }
+  .philosophy h2{
+    color:var(--cream);
+    font-size:clamp(30px,3.4vw,42px);
+    line-height:1.18;
+  }
+  .philosophy .lede{
+    font-size:20px;
+    color:var(--cream);
+    line-height:1.7;
+    max-width:52ch;
+  }
+  .philosophy .lede + .lede{margin-top:20px; color:rgba(242,238,227,0.78);}
+  .rule-gold{
+    width:64px; height:1px; background:var(--brass-soft);
+    margin-bottom:28px;
+  }
+
+  /* ---------- focus areas ---------- */
+  .focus{
+    padding:110px 0;
+  }
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap:40px;
+    margin-bottom:64px;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:28px;
+  }
+  .section-head h2{
+    font-size:clamp(30px,3.2vw,40px);
+    max-width:16ch;
+  }
+  .section-head p{
+    max-width:38ch;
+    color:var(--ink-soft);
+    font-size:17.5px;
+    margin:0;
+  }
+
+  .focus-list{
+    display:flex;
+    flex-direction:column;
+  }
+  .focus-item{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:48px;
+    padding:42px 0;
+    border-bottom:1px solid var(--rule);
+    align-items:baseline;
+  }
+  .focus-item:first-child{padding-top:0;}
+  .focus-item .fi-label{
+    font-family:'Fraunces', serif;
+    color:var(--rubellite);
+    font-size:16px;
+    font-style:italic;
+  }
+  .focus-item h3{
+    font-size:26px;
+    margin-bottom:14px;
+    line-height:1.25;
+  }
+  .focus-item p{
+    margin:0; max-width:62ch;
+    color:var(--charcoal);
+  }
+  @media (max-width:760px){
+    .focus-item{grid-template-columns:1fr; gap:10px;}
+  }
+
+  /* ---------- process ---------- */
+  .process{
+    background:var(--cream-dim);
+    padding:110px 0;
+  }
+  .process .steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--rule);
+    border:1px solid var(--rule);
+    margin-top:60px;
+  }
+  .step{
+    background:var(--paper);
+    padding:42px 32px 40px;
+  }
+  .step .num{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--brass);
+    font-size:17px;
+    margin-bottom:26px;
+  }
+  .step h3{font-size:22px; margin-bottom:12px;}
+  .step p{margin:0; font-size:17px; color:var(--ink-soft);}
+  @media (max-width:900px){
+    .process .steps{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:560px){
+    .process .steps{grid-template-columns:1fr;}
+  }
+
+  /* ---------- about ---------- */
+  .about{
+    padding:110px 0;
+  }
+  .about .grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:80px;
+  }
+  .about-quote{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:clamp(26px,2.6vw,32px);
+    line-height:1.35;
+    color:var(--ink);
+  }
+  .commitments{
+    margin-top:44px;
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+  .commitment{
+    display:grid;
+    grid-template-columns:170px 1fr;
+    gap:30px;
+    padding:26px 0;
+    border-top:1px solid var(--rule);
+  }
+  .commitment:last-child{border-bottom:1px solid var(--rule);}
+  .commitment .name{
+    font-family:'Fraunces', serif;
+    color:var(--rubellite);
+    font-size:19px;
+  }
+  .commitment p{margin:0; color:var(--charcoal);}
+  @media (max-width:760px){
+    .commitment{grid-template-columns:1fr; gap:6px;}
+  }
+
+  /* ---------- practice areas ---------- */
+  .practice{
+    background:var(--ink);
+    color:var(--cream);
+    padding:110px 0;
+  }
+  .practice .section-head{border-bottom-color:var(--rule-dark);}
+  .practice .section-head h2{color:var(--cream);}
+  .practice .section-head p{color:rgba(242,238,227,0.72);}
+  .practice-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--rule-dark);
+    border:1px solid var(--rule-dark);
+    margin-top:60px;
+  }
+  .pcard{
+    background:var(--ink-soft);
+    padding:40px 34px 44px;
+    display:flex;
+    flex-direction:column;
+  }
+  .pcard h3{
+    color:var(--cream);
+    font-size:22px;
+    line-height:1.3;
+    margin-bottom:16px;
+  }
+  .pcard p{
+    color:rgba(242,238,227,0.75);
+    font-size:16.5px;
+    margin:0;
+  }
+  @media (max-width:900px){ .practice-grid{grid-template-columns:1fr;} }
+
+  /* ---------- contact ---------- */
+  .contact{
+    padding:130px 0 120px;
+    text-align:center;
+  }
+  .contact h2{
+    font-size:clamp(32px,4vw,48px);
+    max-width:20ch;
+    margin:0 auto;
+    line-height:1.15;
+  }
+  .contact p{
+    max-width:50ch;
+    margin:26px auto 0;
+    color:var(--ink-soft);
+    font-size:19px;
+  }
+  .contact .btn-primary{margin-top:40px; display:inline-block;}
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1px solid var(--rule);
+    padding:38px 0;
+  }
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:center;
+    gap:20px; flex-wrap:wrap;
+  }
+  footer .flabel{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--ink-soft);
+    font-size:16px;
+  }
+  footer .flinks{
+    display:flex; gap:28px; font-size:15px; color:var(--sage);
+  }
+  footer .flinks a{text-decoration:none;}
+  footer .flinks a:hover{color:var(--rubellite);}
+
+</style>
 </head>
 <body>
-    <h1>TEST 2</h1>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <path d="M13 1 L23 8 L19 25 L7 25 L3 8 Z" stroke="#7c2635" stroke-width="1.1"/>
+        <path d="M13 1 L13 25 M3 8 L23 8 M7 25 L13 8 L19 25" stroke="#7c2635" stroke-width="0.7"/>
+      </svg>
+      Rubellite
+    </div>
+    <div class="navlinks">
+      <a href="#philosophy">Philosophy</a>
+      <a href="#focus">Focus Areas</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#practice">Practice Areas</a>
+    </div>
+    <a class="nav-cta" href="#contact">Request an Executive Review</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow-line"><span class="stem"></span>Corporate Estate &amp; Succession Advisory</div>
+      <h1 class="hero-head">Strategic wealth and estate planning for extraordinary legacies.</h1>
+      <p class="hero-sub">We help high-net-worth entrepreneurs, business owners, and family enterprises optimize corporate capital, minimize estate tax friction, and transfer wealth across generations.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="#contact">Schedule a Private Consultation</a>
+        <span class="cta-note">By referral and introduction</span>
+      </div>
+    </div>
+    <div class="hero-figure">
+      <svg width="300" height="360" viewBox="0 0 300 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="150,10 230,70 260,150 150,350 40,150 70,70" stroke="#7c2635" stroke-width="1.2" fill="none"/>
+        <polygon points="150,10 230,70 190,150 110,150 70,70" stroke="#a9863e" stroke-width="1" fill="none"/>
+        <line x1="150" y1="10" x2="150" y2="350" stroke="#a9863e" stroke-width="0.7"/>
+        <line x1="70" y1="70" x2="150" y2="150" stroke="#a9863e" stroke-width="0.7"/>
+        <line x1="230" y1="70" x2="150" y2="150" stroke="#a9863e" stroke-width="0.7"/>
+        <line x1="110" y1="150" x2="40" y2="150" stroke="#7c2635" stroke-width="0.7"/>
+        <line x1="190" y1="150" x2="260" y2="150" stroke="#7c2635" stroke-width="0.7"/>
+        <line x1="110" y1="150" x2="150" y2="350" stroke="#7c2635" stroke-width="0.7"/>
+        <line x1="190" y1="150" x2="150" y2="350" stroke="#7c2635" stroke-width="0.7"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section class="philosophy" id="philosophy">
+  <div class="wrap grid">
+    <div>
+      <div class="rule-gold"></div>
+      <h2>Built by business owners, for business owners.</h2>
+    </div>
+    <div>
+      <p class="lede">Growing an enterprise requires uncommon dedication. Protecting what you've built requires absolute precision.</p>
+      <p class="lede">At Rubellite Wealth Management, we bring first-hand entrepreneurial experience to high-net-worth financial planning. We speak the language of corporate balance sheets, holding companies, and family dynamics — helping you navigate complex tax environments to ensure your capital remains where it belongs: with your family and your business.</p>
+    </div>
+  </div>
+</section>
+
+<section class="focus" id="focus">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Core focus areas</h2>
+      <p>Three disciplines, applied together, so that your enterprise, your estate, and your family are planned for as one.</p>
+    </div>
+    <div class="focus-list">
+      <div class="focus-item">
+        <div class="fi-label">Corporate</div>
+        <div>
+          <h3>Corporate Estate &amp; Tax Planning</h3>
+          <p>Maximize the value of your corporate surplus. We design sophisticated corporate-owned life insurance strategies, optimize Capital Dividend Accounts, and structure tax-efficient wealth extractions for business owners.</p>
+        </div>
+      </div>
+      <div class="focus-item">
+        <div class="fi-label">Preservation</div>
+        <div>
+          <h3>Wealth Preservation &amp; Risk Architecture</h3>
+          <p>Protect your assets against systemic liabilities, market turbulence, and unexpected liquidity events. We build bespoke risk management frameworks tailored to complex, high-value asset bases.</p>
+        </div>
+      </div>
+      <div class="focus-item">
+        <div class="fi-label">Succession</div>
+        <div>
+          <h3>Business Succession &amp; Intergenerational Legacy</h3>
+          <p>Transition leadership and capital without disrupting operations or family harmony. We craft seamless succession strategies that preserve both your enterprise value and your core family principles.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head" style="border-bottom:none; padding-bottom:0; margin-bottom:0;">
+      <h2>The Rubellite process</h2>
+      <p>A four-stage engagement, repeated as your business, tax law, and family circumstances evolve.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">One</div>
+        <h3>Clarify</h3>
+        <p>We map out your complete financial ecosystem — corporate structures, tax liabilities, and family aspirations — to uncover hidden opportunities and risks.</p>
+      </div>
+      <div class="step">
+        <div class="num">Two</div>
+        <h3>Architect</h3>
+        <p>Using advanced estate structures and high-capacity underwriting, we build a tailored wealth strategy integrated directly with your business goals.</p>
+      </div>
+      <div class="step">
+        <div class="num">Three</div>
+        <h3>Execute</h3>
+        <p>We collaborate seamlessly with your team of CPAs, corporate lawyers, and MGA partners to implement your plan with total precision.</p>
+      </div>
+      <div class="step">
+        <div class="num">Four</div>
+        <h3>Manage</h3>
+        <p>Wealth evolves. We provide ongoing advisory to adapt your plan to tax law changes, business growth, and intergenerational transitions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap grid">
+    <div>
+      <div class="rule-gold"></div>
+      <p class="about-quote">Like the rare gemstone that inspires our name, Rubellite represents enduring strength, protection, and rare value.</p>
+    </div>
+    <div>
+      <h2 style="font-size:clamp(28px,3vw,36px); margin-bottom:20px;">Clarity in complex wealth.</h2>
+      <p style="color:var(--ink-soft); max-width:60ch;">We were founded on a simple realization: standard wealth management often fails complex businesses. High-net-worth entrepreneurs don't just need products — they need strategic clarity. Having walked the path of growing enterprise capital ourselves, we know firsthand what it takes to build a legacy, and the specialized foresight required to protect it.</p>
+      <div class="commitments">
+        <div class="commitment">
+          <div class="name">Independence</div>
+          <p>Unbiased access to top-tier Canadian underwriting and tier-1 financial institutions.</p>
+        </div>
+        <div class="commitment">
+          <div class="name">Precision</div>
+          <p>High-level corporate tax integration tailored specifically to Canadian tax law and holding company dynamics.</p>
+        </div>
+        <div class="commitment">
+          <div class="name">Continuity</div>
+          <p>A multi-generational management perspective built to serve you, your enterprise, and the generations that follow.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="practice" id="practice">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Practice areas</h2>
+      <p>Each engagement is built around your corporate structure and integrated with your existing advisory team.</p>
+    </div>
+    <div class="practice-grid">
+      <div class="pcard">
+        <h3>Corporate Capital Optimization</h3>
+        <p>Retained earnings sitting in passive corporate investments face heavy tax drag. We implement tax-sheltered corporate growth strategies that convert corporate surplus into tax-free wealth, expanding your family's future liquidity.</p>
+      </div>
+      <div class="pcard">
+        <h3>Key Person &amp; Shareholder Protection</h3>
+        <p>Protect your enterprise from partner liquidity shocks, key-person losses, and buy-sell funding voids. We structure fully funded buy-sell agreements and executive retention policies that guarantee business continuity.</p>
+      </div>
+      <div class="pcard">
+        <h3>High-Net-Worth Estate Freezes &amp; Succession</h3>
+        <p>Lock in existing tax liabilities today while passing future business appreciation to the next generation tax-deferred. We work alongside your tax team to build seamless estate freeze and trust strategies.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Ready to bring absolute clarity to your wealth?</h2>
+    <p>Whether you are scaling your enterprise, planning a corporate transition, or structuring your family legacy, we are here to guide the conversation.</p>
+    <a class="btn-primary" href="#">Request an Executive Review</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="flabel">Rubellite Wealth Management — Securing Enterprise, Family, and Legacy.</div>
+    <div class="flinks">
+      <a href="#philosophy">Philosophy</a>
+      <a href="#focus">Focus Areas</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
