@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" role="img" aria-label="Rubellite Wealth Management"> 
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" role="img" aria-label="Rubellite Wealth Management">
   <defs>
     <linearGradient id="g" x1="0" x2="1">
       <stop offset="0" stop-color="#B9A590" />
       <stop offset="1" stop-color="#8A6E5C" />
     </linearGradient>
+    <style><![CDATA[
+      .brand{font-family:Fraunces, serif;font-weight:600;letter-spacing:0.08em}
+      .mark{font-family:Georgia, serif;font-weight:700}
+    ]]></style>
   </defs>
-  <rect width="200" height="60" fill="none" />
-  <text x="12" y="38" font-family="Fraunces, serif" font-size="20" fill="url(#g)">Rubellite</text>
-  <text x="110" y="38" font-family="EB Garamond, serif" font-size="12" fill="#2B231D">Wealth Management</text>
+  <!-- Monogram -->
+  <g transform="translate(8,8)">
+    <text x="0" y="34" class="mark" font-size="36" fill="#4A3F35">R</text>
+    <text x="22" y="58" class="mark" font-size="28" fill="#4A3F35">W</text>
+  </g>
+  <!-- Wordmark -->
+  <g transform="translate(110,38)">
+    <text x="0" y="0" class="brand" font-size="22" fill="url(#g)">RUBELLITE</text>
+    <text x="0" y="22" font-family="EB Garamond, serif" font-size="12" fill="#2B231D">WEALTH MANAGEMENT</text>
+  </g>
 </svg>
