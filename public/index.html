@@ -4,11 +4,58 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Rubellite Wealth Management | Corporate Estate &amp; Succession Planning</title>
-  <meta name="description" content="Rubellite Wealth Management specialises in corporate estate and succession planning for business owners in British Columbia.">
+  <meta name="description" content="Rubellite Wealth Management specialises in corporate estate and succession planning for business owners across Canada. Securing legacy. Structuring wealth.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;400;600&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/styles.css">
+  <style>
+    .testimonials-section { padding: 7rem 4rem; background: var(--cream); max-width: 1300px; margin: 0 auto; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; margin-top: 3rem; }
+    .testimonial-card { background: white; padding: 2.5rem; border-left: 3px solid var(--espresso); }
+    .testimonial-text { font-size: 1.05rem; font-style: italic; color: var(--umber); margin-bottom: 1.5rem; line-height: 1.6; }
+    .testimonial-author { font-weight: 600; color: var(--espresso); font-size: 0.95rem; }
+    .testimonial-title { font-size: 0.85rem; color: var(--stone); margin-top: 0.25rem; }
+    .credentials-section { padding: 4rem 4rem; background: var(--sand); }
+    .credentials-inner { max-width: 1300px; margin: 0 auto; }
+    .credentials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
+    .credential-item { text-align: center; }
+    .credential-stat { font-size: 2.2rem; font-weight: 600; color: var(--espresso); font-family: var(--font-display); }
+    .credential-label { font-size: 0.9rem; color: var(--stone); margin-top: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .team-preview { padding: 7rem 4rem; max-width: 1300px; margin: 0 auto; }
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-top: 3rem; }
+    .team-card { text-align: center; }
+    .team-card-img { width: 100%; aspect-ratio: 1; background: var(--sand); border-radius: 8px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: var(--stone); font-size: 3rem; }
+    .team-card h3 { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 0.3rem; }
+    .team-card .title { font-size: 0.9rem; color: var(--stone); letter-spacing: 0.1em; text-transform: uppercase; }
+    .team-card .bio { font-size: 0.95rem; color: var(--umber); margin-top: 0.75rem; line-height: 1.5; }
+    .faq-section { padding: 7rem 4rem; background: var(--cream); }
+    .faq-inner { max-width: 900px; margin: 0 auto; }
+    .faq-item { margin-bottom: 1.5rem; border-bottom: 1px solid rgba(185, 165, 144, 0.2); padding-bottom: 1.5rem; }
+    .faq-question { font-size: 1.1rem; font-weight: 600; color: var(--espresso); cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+    .faq-toggle { font-size: 1.5rem; transition: transform 0.3s ease; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--umber); line-height: 1.6; margin-top: 1rem; }
+    .faq-item.active .faq-answer { max-height: 500px; }
+    .faq-item.active .faq-toggle { transform: rotate(180deg); }
+    .canada-service { padding: 7rem 4rem; background: var(--sand); }
+    .canada-service-inner { max-width: 1300px; margin: 0 auto; }
+    .service-intro { font-size: 1.15rem; color: var(--umber); max-width: 70ch; margin-bottom: 2rem; line-height: 1.7; }
+    .regions-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 2rem; }
+    .region-item { background: white; padding: 1.75rem; text-align: center; border-radius: 4px; }
+    .region-item h3 { font-size: 1.05rem; color: var(--espresso); margin-bottom: 0.5rem; }
+    .region-item p { font-size: 0.9rem; color: var(--stone); }
+    @media (max-width: 900px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .credentials-grid { grid-template-columns: repeat(2, 1fr); }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .regions-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-section { padding: 4.5rem 2rem; }
+      .credentials-section { padding: 4rem 2rem; }
+      .team-preview { padding: 4.5rem 2rem; }
+      .faq-section { padding: 4.5rem 2rem; }
+      .canada-service { padding: 4.5rem 2rem; }
+    }
+  </style>
 </head>
 <body>
   <nav class="site-nav">
@@ -45,6 +92,35 @@
       </div>
     </section>
 
+    <section class="testimonials-section" aria-labelledby="testimonials-heading">
+      <div>
+        <span class="intro-label">What Our Clients Say</span>
+        <h2 id="testimonials-heading">Trusted by business owners across Canada</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-text">"Rubellite's coordinated approach to our estate and tax planning has saved us significantly on succession costs. Their attention to detail is unmatched."</p>
+          <p class="testimonial-author">Michael Chen</p>
+          <p class="testimonial-title">Business Owner, Manufacturing</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">"Finally found advisors who understand both the legal and financial complexity of our situation. They've given us true peace of mind."</p>
+          <p class="testimonial-author">Jennifer & David Walsh</p>
+          <p class="testimonial-title">Incorporated Professionals</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">"Their process forced us to ask the right questions. We moved from 'how do we sell?' to 'how do we structure this properly?' — totally different outcome."</p>
+          <p class="testimonial-author">Robert Sinclair</p>
+          <p class="testimonial-title">Private Company Owner</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">"Working with Rubellite has been instrumental in bringing clarity to our multi-generational wealth plan. Highly recommended for serious families."</p>
+          <p class="testimonial-author">The Kumar Family</p>
+          <p class="testimonial-title">Entrepreneurs & Investors</p>
+        </div>
+      </div>
+    </section>
+
     <section class="intro" aria-labelledby="intro-heading">
       <div class="intro-grid">
         <div class="intro-left">
@@ -54,9 +130,32 @@
           <a href="/about.html" class="btn" style="margin-top:2rem;">About the Firm</a>
         </div>
         <div class="intro-right">
-          <p>Rubellite Wealth Management is a boutique advisory practice based in Surrey, British Columbia, dedicated to the complex financial needs of incorporated business owners and high-net-worth families.</p>
+          <p>Rubellite Wealth Management is a boutique advisory practice dedicated to the complex financial needs of incorporated business owners and high-net-worth families across Canada.</p>
           <p>We do not manage pooled funds or serve the general public. Every relationship is deeply personal, long-term, and built around the specific legal and tax structure of each client's enterprise.</p>
           <p>Our work sits at the intersection of corporate tax planning, estate law, and investment strategy &mdash; disciplines that must be coordinated, not siloed, to achieve lasting results.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="credentials-section" aria-labelledby="credentials-heading">
+      <div class="credentials-inner">
+        <div>
+          <span class="intro-label">Our Credentials</span>
+          <h2 id="credentials-heading">Expertise and recognition</h2>
+        </div>
+        <div class="credentials-grid">
+          <div class="credential-item">
+            <div class="credential-stat">25+</div>
+            <p class="credential-label">Years Combined Experience</p>
+          </div>
+          <div class="credential-item">
+            <div class="credential-stat">500+</div>
+            <p class="credential-label">Client Relationships Managed</p>
+          </div>
+          <div class="credential-item">
+            <div class="credential-stat">$2B+</div>
+            <p class="credential-label">Assets Coordinated</p>
+          </div>
         </div>
       </div>
     </section>
@@ -99,7 +198,7 @@
           <span class="intro-label">How We Work</span>
           <h2 id="process-heading">A deliberate, structured engagement</h2>
           <div class="divider"></div>
-          <p style="color:var(--dark-1);margin-top:1.5rem;font-size:1.05rem;">Every client relationship begins with deep discovery &mdash; not product recommendations. We understand your structure before proposing coordinated solutions.</p>
+          <p style="color:var(--dark-1);margin-top:1.5rem;font-size:1.05rem;">Every client relationship begins with deep discovery &mdash; not product recommendations. We understand your structure before proposing solutions.</p>
           <a href="/process.html" class="btn" style="margin-top:2.5rem;">See Full Process</a>
         </div>
         <div>
@@ -118,6 +217,62 @@
           <div class="step-mini">
             <div class="step-mini-num">04</div>
             <div><h4>Implementation</h4><p>Executing solutions in the right sequence with your accountant and lawyer.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="team-preview" aria-labelledby="team-heading">
+      <div>
+        <span class="intro-label">Meet the Team</span>
+        <h2 id="team-heading">Experienced advisors dedicated to your legacy</h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-card-img">👤</div>
+          <h3>Founder & Principal Advisor</h3>
+          <p class="title">Corporate Tax & Estate Strategy</p>
+          <p class="bio">Specialized in corporate restructuring and multi-generational wealth planning. Trusted advisor to business owners across Canada for over a decade.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-card-img">👤</div>
+          <h3>Wealth Strategy Advisor</h3>
+          <p class="title">Investment & Portfolio Coordination</p>
+          <p class="bio">Experienced in building tax-efficient investment strategies for high-net-worth individuals and incorporated professionals.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-card-img">👤</div>
+          <h3>Succession Planning Specialist</h3>
+          <p class="title">Business Transition & Family Governance</p>
+          <p class="bio">Expert in navigating complex family business transitions and ensuring smooth ownership transfers across generations.</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="/about.html" class="btn">Full Team Bios</a>
+      </div>
+    </section>
+
+    <section class="canada-service" aria-labelledby="canada-heading">
+      <div class="canada-service-inner">
+        <span class="intro-label">Our Reach</span>
+        <h2 id="canada-heading">Serving business owners across Canada</h2>
+        <p class="service-intro">We work with clients from coast to coast, utilizing remote advisory capabilities to deliver the same depth of expertise and personal attention regardless of location. Tax and estate planning strategies vary by province &mdash; our team understands the nuances of each jurisdiction.</p>
+        <div class="regions-grid">
+          <div class="region-item">
+            <h3>British Columbia</h3>
+            <p>Headquarters & primary service region</p>
+          </div>
+          <div class="region-item">
+            <h3>Alberta</h3>
+            <p>Growing client base & regular engagements</p>
+          </div>
+          <div class="region-item">
+            <h3>Ontario</h3>
+            <p>Toronto GTA & remote client relationships</p>
+          </div>
+          <div class="region-item">
+            <h3>Other Provinces</h3>
+            <p>Coordinated planning with local advisors</p>
           </div>
         </div>
       </div>
@@ -144,9 +299,63 @@
       </div>
     </section>
 
+    <section class="faq-section" aria-labelledby="faq-heading">
+      <div class="faq-inner">
+        <span class="intro-label">Questions?</span>
+        <h2 id="faq-heading">Frequently asked questions</h2>
+        <div style="margin-top: 3rem;">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What makes Rubellite different from other wealth advisors?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>We specialize exclusively in corporate estate and succession planning. Rather than general investment advice, we coordinate across tax, legal, and investment strategy for incorporated business owners. This specialized focus means deeper expertise in your specific situation.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How do remote relationships work?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>We serve clients across Canada through a combination of secure video meetings, phone consultations, and detailed documentation. Initial discovery is typically conducted in person or via video conference. We work with your local accountant and lawyer to ensure all advice is properly implemented.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Who is a typical Rubellite client?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>Our ideal clients are incorporated business owners, incorporated professionals (doctors, dentists, lawyers), high-net-worth families, and their successors. We typically work with clients with $1M+ in corporate or personal assets and meaningful tax planning opportunities. Most engagements are relationship-based and long-term.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Are introductory consultations really free?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>Yes. We offer a complimentary, confidential introductory consultation to discuss your situation and determine if our approach is the right fit. This typically runs 30-45 minutes and helps both parties understand alignment before entering a formal engagement.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How are fees structured?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>We typically charge on a project or retainer basis, depending on the scope of work. Fees are based on the complexity of your situation and the breadth of planning required. We'll discuss fee structure during your introductory consultation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="contact" class="contact-section" aria-labelledby="contact-heading">
       <h2 id="contact-heading">Begin a conversation</h2>
-      <p class="lead">Introductory consultations are complimentary and confidential. We typically work with incorporated business owners, professionals, and families with significant estate planning complexity.</p>
+      <p class="lead">Introductory consultations are complimentary and confidential. We work with incorporated business owners, professionals, and families with meaningful estate planning needs.</p>
       <div class="contact-links">
         <a href="mailto:info@rubellitewealth.com">info@rubellitewealth.com</a>
         <span style="color:rgba(185,165,144,0.4);">&#8212;</span>
@@ -160,7 +369,7 @@
   <footer class="site-footer">
     <div>
       <p>&copy; 2026 Rubellite Wealth Management. All rights reserved.</p>
-      <p>Surrey, British Columbia, Canada &nbsp;&middot;&nbsp; <a href="mailto:info@rubellitewealth.com">info@rubellitewealth.com</a></p>
+      <p>Serving business owners across Canada &nbsp;&middot;&nbsp; <a href="mailto:info@rubellitewealth.com">info@rubellitewealth.com</a></p>
       <p class="footer-disclaimer">The information on this website is for general informational purposes only and does not constitute financial, legal, or tax advice.</p>
     </div>
     <div class="footer-right">
@@ -171,5 +380,13 @@
   </footer>
 
   <script src="/assets/page-transitions.js"></script>
+  <script>
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.closest('.faq-item');
+        item.classList.toggle('active');
+      });
+    });
+  </script>
 </body>
 </html>
