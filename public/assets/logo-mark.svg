@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Rubellite Wealth Monogram</title>
+  <desc id="desc">Rubellite Wealth monogram symbol in a luxury serif style.</desc>
+
+  <defs>
+    <linearGradient id="ink" x1="0" x2="1">
+      <stop offset="0" stop-color="#4a311f"/>
+      <stop offset="0.6" stop-color="#5a3b2a"/>
+      <stop offset="1" stop-color="#3c2a1e"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(80 30)">
+    <g fill="url(#ink)" font-family="Georgia, 'Times New Roman', serif" font-weight="700">
+      <text x="130" y="430" font-size="520">R</text>
+      <text x="390" y="560" font-size="370">W</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Rubellite Wealth</title>
+  <desc id="desc">Transparent luxury wordmark for Rubellite Wealth.</desc>
+
+  <defs>
+    <linearGradient id="ink" x1="0" x2="1">
+      <stop offset="0" stop-color="#4a311f"/>
+      <stop offset="0.6" stop-color="#5a3b2a"/>
+      <stop offset="1" stop-color="#3c2a1e"/>
+    </linearGradient>
+    <linearGradient id="lineInk" x1="0" x2="1">
+      <stop offset="0" stop-color="#775c46"/>
+      <stop offset="0.5" stop-color="#4c382d"/>
+      <stop offset="1" stop-color="#775c46"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(170 90)">
+    <g fill="url(#ink)" font-family="Georgia, 'Times New Roman', serif" font-weight="700">
+      <text x="235" y="330" font-size="470">R</text>
+      <text x="475" y="430" font-size="330">W</text>
+    </g>
+
+    <g fill="url(#ink)" font-family="Georgia, 'Times New Roman', serif" letter-spacing="14">
+      <text x="0" y="560" font-size="145" font-weight="500">RUBELLITE</text>
+    </g>
+
+    <g>
+      <line x1="350" y1="650" x2="615" y2="650" stroke="url(#lineInk)" stroke-width="4" stroke-linecap="round"/>
+      <text x="675" y="685" font-family="Georgia, 'Times New Roman', serif" font-size="78" font-weight="400" fill="url(#ink)" letter-spacing="10">WEALTH</text>
+      <line x1="1010" y1="650" x2="1275" y2="650" stroke="url(#lineInk)" stroke-width="4" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>
