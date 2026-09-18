@@ -1,23 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" role="img" aria-label="Rubellite Wealth Management">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Rubellite Wealth</title>
+  <desc id="desc">Rustic luxury monogram and wordmark for Rubellite Wealth.</desc>
+
   <defs>
-    <linearGradient id="g" x1="0" x2="1">
-      <stop offset="0" stop-color="#B9A590" />
-      <stop offset="1" stop-color="#8A6E5C" />
+    <linearGradient id="ink" x1="0" x2="1">
+      <stop offset="0" stop-color="#4a311f"/>
+      <stop offset="0.6" stop-color="#5a3b2a"/>
+      <stop offset="1" stop-color="#3c2a1e"/>
     </linearGradient>
-    <style><![CDATA[
-      .brand{font-family:Fraunces, serif;font-weight:600;letter-spacing:0.08em}
-      .mark{font-family:Georgia, serif;font-weight:700}
-    ]]></style>
+
+    <linearGradient id="lineInk" x1="0" x2="1">
+      <stop offset="0" stop-color="#775c46"/>
+      <stop offset="0.5" stop-color="#4c382d"/>
+      <stop offset="1" stop-color="#775c46"/>
+    </linearGradient>
+
+    <filter id="paperTexture" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.08"/>
+      </feComponentTransfer>
+    </filter>
   </defs>
-  <!-- Monogram -->
-  <g transform="translate(8,8)">
-    <text x="0" y="34" class="mark" font-size="36" fill="#4A3F35">R</text>
-    <text x="22" y="58" class="mark" font-size="28" fill="#4A3F35">W</text>
-  </g>
-  <!-- Wordmark -->
-  <g transform="translate(110,38)">
-    <text x="0" y="0" class="brand" font-size="22" fill="url(#g)">RUBELLITE</text>
-    <text x="0" y="22" font-family="EB Garamond, serif" font-size="12" fill="#2B231D">WEALTH MANAGEMENT</text>
+
+  <rect width="1600" height="900" fill="#efe9e0"/>
+  <rect width="1600" height="900" filter="url(#paperTexture)" opacity="0.9"/>
+
+  <g transform="translate(170 110)">
+    <g fill="url(#ink)" font-family="Georgia, 'Times New Roman', serif" font-weight="700">
+      <text x="230" y="295" font-size="440" font-style="normal">R</text>
+      <text x="455" y="395" font-size="295" font-style="normal">W</text>
+    </g>
+
+    <g fill="url(#ink)" font-family="Georgia, 'Times New Roman', serif" letter-spacing="14">
+      <text x="0" y="520" font-size="136" font-weight="500">RUBELLITE</text>
+    </g>
+
+    <g>
+      <line x1="355" y1="610" x2="615" y2="610" stroke="url(#lineInk)" stroke-width="4" stroke-linecap="round"/>
+      <text x="675" y="645" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="400" fill="url(#ink)" letter-spacing="10">WEALTH</text>
+      <line x1="1010" y1="610" x2="1270" y2="610" stroke="url(#lineInk)" stroke-width="4" stroke-linecap="round"/>
+    </g>
   </g>
 </svg>
