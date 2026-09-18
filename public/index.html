@@ -43,7 +43,7 @@
       width: 100%; height: 100%;
       pointer-events: none;
       z-index: 9999;
-      opacity: 0.025;
+      opacity: 0.02;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
       background-repeat: repeat;
       background-size: 256px 256px;
@@ -150,7 +150,7 @@
       transition: background 0.6s ease, backdrop-filter 0.6s ease, padding 0.4s ease;
     }
     .site-nav.scrolled {
-      background: rgba(247, 245, 240, 0.85);
+      background: rgba(247, 245, 240, 0.9);
       backdrop-filter: blur(20px) saturate(1.2);
       -webkit-backdrop-filter: blur(20px) saturate(1.2);
       padding: 1rem 4rem;
@@ -314,7 +314,9 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Hero */
+    /* ============================================
+       HERO WITH KEN BURNS VIDEO-LOOP EFFECT
+       ============================================ */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -325,18 +327,23 @@
       overflow: hidden;
       background: var(--cream);
     }
-    .hero::before {
+    .hero-bg {
+      position: absolute;
+      inset: -5%;
+      background: url('images/hero-luxury.jpg') center/cover no-repeat;
+      animation: kenBurns 25s ease-in-out infinite alternate;
+      opacity: 0.18;
+      filter: sepia(20%) saturate(80%) contrast(95%);
+    }
+    .hero-bg::after {
       content: '';
       position: absolute;
-      top: -50%; right: -20%;
-      width: 80%; height: 150%;
-      background: radial-gradient(ellipse at center, rgba(184, 160, 136, 0.08) 0%, transparent 70%);
-      pointer-events: none;
-      animation: heroGlow 8s ease-in-out infinite alternate;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(247,245,240,0.3) 0%, transparent 60%);
     }
-    @keyframes heroGlow {
-      0% { transform: scale(1) rotate(0deg); opacity: 0.6; }
-      100% { transform: scale(1.1) rotate(5deg); opacity: 1; }
+    @keyframes kenBurns {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.1) translate(-1%, -1%); }
     }
     .hero-content {
       max-width: 900px;
@@ -538,7 +545,9 @@
       letter-spacing: 0.05em;
     }
 
-    /* Intro Section */
+    /* ============================================
+       INTRO SECTION WITH SIDE IMAGE
+       ============================================ */
     .intro {
       padding: 8rem 4rem;
       background: var(--light-1);
@@ -557,9 +566,9 @@
       max-width: 1300px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 6rem;
-      align-items: start;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: center;
       position: relative;
       z-index: 1;
     }
@@ -578,11 +587,41 @@
       line-height: 1.8;
     }
     .intro-right p:last-child { margin-bottom: 0; }
+    .intro-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      aspect-ratio: 4/5;
+    }
+    .intro-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(10%) saturate(85%) contrast(102%);
+      transition: transform 8s ease;
+    }
+    .intro-image:hover img {
+      transform: scale(1.05);
+    }
+    .intro-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(237,233,225,0.4) 100%);
+      pointer-events: none;
+    }
 
-    /* Credentials */
+    /* Credentials with marble texture */
     .credentials-section {
-      padding: 5rem 4rem;
-      background: var(--light-2);
+      padding: 6rem 4rem;
+      background: linear-gradient(
+          rgba(224, 217, 206, 0.92),
+          rgba(224, 217, 206, 0.92)
+        ),
+        url('images/marble-gold.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
     }
     .credentials-inner { max-width: 1300px; margin: 0 auto; }
     .credentials-section h2 {
@@ -695,7 +734,7 @@
     }
     .focus-card h3 {
       font-family: var(--font-display);
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 400;
       color: var(--darkest);
       margin-bottom: 1rem;
@@ -707,22 +746,35 @@
       line-height: 1.7;
     }
 
-    /* Real Estate Service Section */
+    /* ============================================
+       REAL ESTATE SECTION WITH ESTATE BACKGROUND
+       ============================================ */
     .re-service-section {
-      padding: 8rem 4rem;
-      background: var(--darkest);
-      color: var(--cream);
+      padding: 10rem 4rem;
       position: relative;
       overflow: hidden;
+      color: var(--cream);
     }
-    .re-service-section::before {
-      content: '';
+    .re-service-bg {
       position: absolute;
-      top: -30%; left: -10%;
-      width: 60%; height: 150%;
-      background: radial-gradient(ellipse at center, rgba(184, 160, 136, 0.06) 0%, transparent 60%);
-      pointer-events: none;
-      animation: gemPulse 6s ease-in-out infinite alternate;
+      inset: 0;
+      background: url('images/estate-exterior.jpg') center/cover no-repeat;
+      filter: sepia(15%) saturate(75%) contrast(90%) brightness(0.5);
+      animation: kenBurnsSlow 30s ease-in-out infinite alternate;
+    }
+    @keyframes kenBurnsSlow {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.08) translate(-1%, -0.5%); }
+    }
+    .re-service-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(43, 35, 29, 0.88) 0%,
+        rgba(43, 35, 29, 0.75) 50%,
+        rgba(43, 35, 29, 0.85) 100%
+      );
     }
     .re-service-inner {
       max-width: 1300px;
@@ -739,11 +791,12 @@
       font-weight: 300;
       color: var(--cream);
       margin-bottom: 1.5rem;
+      max-width: 25ch;
     }
     .re-service-section .lead {
       color: rgba(247, 245, 240, 0.75);
       font-size: 1.1rem;
-      max-width: 70ch;
+      max-width: 65ch;
       line-height: 1.8;
       margin-bottom: 3rem;
     }
@@ -753,22 +806,24 @@
       gap: 2rem;
     }
     .re-service-card {
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.04);
       border: 1px solid rgba(184, 160, 136, 0.15);
       padding: 2.5rem 2rem;
       transition: all 0.5s var(--transition-smooth);
+      backdrop-filter: blur(4px);
     }
     .re-service-card:hover {
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(184, 160, 136, 0.3);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(184, 160, 136, 0.35);
       transform: translateY(-4px);
     }
     .re-service-card h4 {
       font-family: var(--font-display);
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 400;
       color: var(--cream);
       margin-bottom: 1rem;
+      line-height: 1.3;
     }
     .re-service-card p {
       color: rgba(247, 245, 240, 0.65);
@@ -776,17 +831,24 @@
       line-height: 1.7;
     }
     .re-service-card .re-icon {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       color: var(--bright-2);
       margin-bottom: 1.5rem;
       opacity: 0.8;
     }
 
-    /* Process Preview */
+    /* Process Preview with library texture */
     .process-preview {
       padding: 8rem 4rem;
-      background: var(--light-1);
+      background: linear-gradient(
+          rgba(237, 233, 225, 0.94),
+          rgba(237, 233, 225, 0.94)
+        ),
+        url('images/library-dark.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       position: relative;
     }
     .process-preview-grid {
@@ -841,7 +903,9 @@
       line-height: 1.6;
     }
 
-    /* Team Preview */
+    /* ============================================
+       TEAM WITH FILTERED PLACEHOLDERS
+       ============================================ */
     .team-preview {
       padding: 8rem 4rem;
       max-width: 1300px;
@@ -857,7 +921,7 @@
     .team-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 3rem;
+      gap: 4rem;
     }
     .team-card {
       text-align: center;
@@ -876,14 +940,24 @@
       overflow: hidden;
       position: relative;
       transition: transform 0.6s var(--transition-smooth), box-shadow 0.6s var(--transition-smooth);
+      filter: sepia(12%) saturate(85%) contrast(103%) brightness(97%);
+    }
+    .team-card-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(184,160,136,0.08) 0%, rgba(43,35,29,0.06) 100%);
+      z-index: 1;
+      pointer-events: none;
     }
     .team-card-img::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, transparent 40%, rgba(184, 160, 136, 0.15) 100%);
+      background: linear-gradient(135deg, transparent 40%, rgba(184, 160, 136, 0.12) 100%);
       opacity: 0;
       transition: opacity 0.5s ease;
+      z-index: 2;
     }
     .team-card:hover .team-card-img {
       transform: translateY(-6px);
@@ -892,7 +966,7 @@
     .team-card:hover .team-card-img::after { opacity: 1; }
     .team-card h3 {
       font-family: var(--font-display);
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 400;
       color: var(--darkest);
       margin-bottom: 0.3rem;
@@ -933,7 +1007,7 @@
     }
     .bio-card {
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 300px 1fr;
       gap: 4rem;
       margin-bottom: 5rem;
       padding-bottom: 5rem;
@@ -953,10 +1027,15 @@
       align-items: center;
       justify-content: center;
       color: var(--bright-2);
+      filter: sepia(12%) saturate(85%) contrast(103%);
+      overflow: hidden;
+    }
+    .bio-photo svg {
+      opacity: 0.6;
     }
     .bio-content h3 {
       font-family: var(--font-display);
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       font-weight: 400;
       color: var(--darkest);
       margin-bottom: 0.25rem;
@@ -1048,7 +1127,9 @@
       color: var(--dark-1);
     }
 
-    /* Gem Section */
+    /* ============================================
+       GEM SECTION WITH SIDE IMAGE
+       ============================================ */
     .gem-section {
       padding: 8rem 4rem;
       background: var(--darkest);
@@ -1073,8 +1154,8 @@
       max-width: 1300px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 6rem;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 5rem;
       align-items: center;
       position: relative;
       z-index: 1;
@@ -1106,6 +1187,22 @@
     }
     .gem-section .btn::before { background: var(--cream); }
     .gem-section .btn:hover { color: var(--darkest); }
+    .gem-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      aspect-ratio: 1;
+    }
+    .gem-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(20%) saturate(70%) contrast(90%) brightness(0.85);
+      transition: transform 10s ease;
+    }
+    .gem-image:hover img {
+      transform: scale(1.03);
+    }
     .gem-mark {
       display: flex;
       align-items: center;
@@ -1113,7 +1210,7 @@
     }
     .gem-mark svg {
       width: 100%;
-      max-width: 300px;
+      max-width: 280px;
       animation: gemRotate 30s linear infinite;
     }
     @keyframes gemRotate {
@@ -1446,8 +1543,10 @@
         gap: 3rem;
       }
       .intro-left { position: relative; top: 0; }
+      .intro-image { max-width: 500px; margin: 0 auto; }
       .bio-card { grid-template-columns: 1fr; gap: 2rem; }
       .bio-photo { max-width: 280px; margin: 0 auto; }
+      .gem-image { max-width: 500px; margin: 0 auto; }
     }
     @media (max-width: 768px) {
       .hero { padding: 7rem 1.5rem 5rem; }
@@ -1554,8 +1653,9 @@
   </nav>
 
   <main>
-    <!-- Hero Section -->
+    <!-- Hero Section with Ken Burns Video-Loop Effect -->
     <section class="hero" aria-label="Introduction">
+      <div class="hero-bg"></div>
       <div class="hero-content">
         <span class="eyebrow reveal">Corporate Estate, Succession & Real Estate Planning</span>
         <h1 class="reveal reveal-delay-1" id="heroHeadline">Securing Legacy.<br>Structuring Wealth.</h1>
@@ -1601,7 +1701,7 @@
       </div>
     </section>
 
-    <!-- Intro Section (Who We Are) -->
+    <!-- Intro Section with Side Image -->
     <section class="intro" id="philosophy" aria-labelledby="intro-heading">
       <div class="intro-grid">
         <div class="intro-left">
@@ -1610,15 +1710,13 @@
           <div class="divider reveal reveal-delay-2"></div>
           <a href="#about" class="btn reveal reveal-delay-3" style="margin-top:2rem;">About the Firm</a>
         </div>
-        <div class="intro-right">
-          <p class="reveal reveal-delay-1">Rubellite Wealth Management is a boutique advisory practice dedicated to the complex financial needs of incorporated business owners and high-net-worth families across Canada.</p>
-          <p class="reveal reveal-delay-2">We do not manage pooled funds or serve the general public. Every relationship is deeply personal, long-term, and built around the specific legal and tax structure of each client's enterprise.</p>
-          <p class="reveal reveal-delay-3">Our work sits at the intersection of corporate tax planning, estate law, investment strategy, and real estate debt optimization — disciplines that must be coordinated, not siloed, to achieve lasting results.</p>
+        <div class="intro-image reveal reveal-delay-2">
+          <img src="images/interior-office.jpg" alt="Refined office interior with marble and glass" loading="lazy">
         </div>
       </div>
     </section>
 
-    <!-- Credentials Section -->
+    <!-- Credentials Section with Marble Texture -->
     <section class="credentials-section" aria-labelledby="credentials-heading">
       <div class="credentials-inner">
         <div>
@@ -1681,8 +1779,10 @@
       </div>
     </section>
 
-    <!-- Real Estate & Debt Optimization Service Section -->
+    <!-- Real Estate & Debt Optimization with Estate Background -->
     <section class="re-service-section" id="realestate" aria-labelledby="re-service-heading">
+      <div class="re-service-bg"></div>
+      <div class="re-service-overlay"></div>
       <div class="re-service-inner">
         <span class="intro-label reveal">Managing Both Sides of Your Balance Sheet</span>
         <h2 id="re-service-heading" class="reveal reveal-delay-1">Real Estate & Debt Optimization</h2>
@@ -1713,7 +1813,7 @@
       </div>
     </section>
 
-    <!-- Process Preview Section -->
+    <!-- Process Preview with Library Background -->
     <section class="process-preview" id="process" aria-labelledby="process-heading">
       <div class="process-preview-grid">
         <div>
@@ -1744,7 +1844,7 @@
       </div>
     </section>
 
-    <!-- Team Preview Section -->
+    <!-- Team Preview with Filtered Placeholders -->
     <section class="team-preview" id="team" aria-labelledby="team-heading">
       <div>
         <span class="intro-label reveal">Meet the Team</span>
@@ -1773,7 +1873,7 @@
       </div>
     </section>
 
-    <!-- Full Team Bios Section (Hidden by default) -->
+    <!-- Full Team Bios Section -->
     <section class="team-bios-section" id="teamBios" aria-labelledby="bios-heading">
       <div class="team-bios-inner">
         <span class="intro-label reveal">Leadership</span>
@@ -1839,7 +1939,7 @@
       </div>
     </section>
 
-    <!-- Gem Section (Why Rubellite) -->
+    <!-- Gem Section with Side Image -->
     <section class="gem-section" aria-label="About Rubellite">
       <div class="gem-inner">
         <div>
@@ -1850,13 +1950,8 @@
           <p class="reveal reveal-delay-3">We work with a select number of clients to ensure every relationship receives the depth of attention it deserves.</p>
           <a href="#about" class="btn reveal reveal-delay-4" style="margin-top:2rem;">About the Firm</a>
         </div>
-        <div class="gem-mark reveal-scale" aria-hidden="true">
-          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="100,4 182,50 182,150 100,196 18,150 18,50" fill="none" stroke="#F6F3EC" stroke-width="1.5"/>
-            <polygon points="100,30 158,64 158,136 100,170 42,136 42,64" fill="none" stroke="#F6F3EC" stroke-width="0.8" opacity="0.5"/>
-            <polygon points="100,55 135,76 135,124 100,145 65,124 65,76" fill="none" stroke="#F6F3EC" stroke-width="0.5" opacity="0.3"/>
-            <circle cx="100" cy="100" r="2.5" fill="#F6F3EC" opacity="0.4"/>
-          </svg>
+        <div class="gem-image reveal-scale">
+          <img src="images/library-classic.jpg" alt="Classic library interior with fireplace and bookshelves" loading="lazy">
         </div>
       </div>
     </section>
@@ -2219,7 +2314,6 @@
           top: teamBios.offsetTop - 80,
           behavior: 'smooth'
         });
-        // Trigger reveal animations for newly visible elements
         setTimeout(() => {
           teamBios.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
             revealObserver.observe(el);
